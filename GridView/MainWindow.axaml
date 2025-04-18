@@ -19,8 +19,8 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="30">
-            <Button>Zapis do .csv</Button>
-            <Button>Odczyt z .csv</Button>
+            <Button Click="Save_OnClick">Zapis do .csv</Button>
+            <Button Click="Load_OnClick">Odczyt z .csv</Button>
         </StackPanel>
     </StackPanel>
     

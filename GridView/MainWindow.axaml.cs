@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -16,6 +17,13 @@ public class Person {
 
     public Person(Func<int> getId, string name = "", string surname= "", int age = 0, string position = "") {
         Id = getId();
+        Name = name;
+        Surname = surname;
+        Age = age;
+        Position = position;
+    }
+    public Person(int id, string name = "", string surname= "", int age = 0, string position = "") {
+        Id = id;
         Name = name;
         Surname = surname;
         Age = age;
@@ -56,6 +64,60 @@ public partial class MainWindow : Window {
         if (selectedItem != null)
         {
             Workers.Remove(selectedItem);
+        }
+    }
+
+    private async void Save_OnClick(object? sender, RoutedEventArgs e)
+    {
+        DirectoryWindow directoryWindow = new DirectoryWindow();
+        await directoryWindow.ShowDialog(this);
+        var directory = directoryWindow.directory;
+        if (directory != "")
+        {
+            string projectRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\.."));
+            string fullPath = Path.Combine(projectRoot, "csv_files" ,directory + ".csv");
+            /*
+            Console.Out.WriteLine(fullPath);
+            Console.Out.WriteLine("\n");
+            for (int i = 0; i < Workers.Count; i++)
+            {
+                Console.Out.WriteLine(Workers[i].Id + "," + Workers[i].Name + "," + Workers[i].Surname + "," + Workers[i].Age + "," + Workers[i].Position);
+            }
+            */
+            using (StreamWriter writer = new StreamWriter(fullPath))
+            {
+             writer.WriteLine("Id,Name,Surname,Age,Position");
+             for (int i = 0; i < Workers.Count; i++)
+             {
+                 writer.WriteLine(Workers[i].Id + "," + Workers[i].Name + "," + Workers[i].Surname + "," + Workers[i].Age + "," + Workers[i].Position);
+             }
+            }
+        }
+
+        directoryWindow.directory = "";
+    }
+
+    private async void Load_OnClick(object? sender, RoutedEventArgs e)
+    {
+        DirectoryWindow directoryWindow = new DirectoryWindow();
+        await directoryWindow.ShowDialog(this);
+        var directory = directoryWindow.directory;
+        string projectRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\.."));
+        string fullPath = Path.Combine(projectRoot, "csv_files" ,directory + ".csv");
+        string line;
+        if (!File.Exists(fullPath))
+        {
+            return;
+        }
+        using (StreamReader reader = new StreamReader(fullPath))
+        {
+            reader.ReadLine();
+            while ((line = reader.ReadLine()) != null)
+            {
+                Console.WriteLine(line);
+                var record = line.Split(',');
+                Workers.Add(new Person(int.Parse(record[0]), record[1], record[2], int.Parse(record[3]), record[4]));
+            }
         }
     }
 }

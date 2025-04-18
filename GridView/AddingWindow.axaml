@@ -32,9 +32,23 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Spacing="50">
                         <ComboBox Name="PositionBox" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <ComboBoxItem Tag="Asystent">Asystent</ComboBoxItem>
-                                <ComboBoxItem Tag="Analityk">Analityk</ComboBoxItem>
+                                <ComboBoxItem Tag="Administrator systemów">Administrator systemów</ComboBoxItem>
                                 <ComboBoxItem Tag="Administracja">Administracja</ComboBoxItem>
+                                <ComboBoxItem Tag="Analityk">Analityk</ComboBoxItem>
+                                <ComboBoxItem Tag="Asystent">Asystent</ComboBoxItem>
+                                <ComboBoxItem Tag="Bioinformatyk">Bioinformatyk</ComboBoxItem>
+                                <ComboBoxItem Tag="Data Scientist">Data Scientist</ComboBoxItem>
+                                <ComboBoxItem Tag="DevOps Engineer">DevOps Engineer</ComboBoxItem>
+                                <ComboBoxItem Tag="Inżynier Oprogramowania">Inżynier Oprogramowania</ComboBoxItem>
+                                <ComboBoxItem Tag="Koordynator Projektu">Koordynator Projektu</ComboBoxItem>
+                                <ComboBoxItem Tag="Młodszy Bioinformatyk">Młodszy Bioinformatyk</ComboBoxItem>
+                                <ComboBoxItem Tag="Programista Python">Programista Python</ComboBoxItem>
+                                <ComboBoxItem Tag="Research Scientist">Research Scientist</ComboBoxItem>
+                                <ComboBoxItem Tag="Specjalista ds. baz danych">Specjalista ds. baz danych</ComboBoxItem>
+                                <ComboBoxItem Tag="Specjalista ds. Machine Learning">Specjalista ds. Machine Learning</ComboBoxItem>
+                                <ComboBoxItem Tag="Specjalista ds. danych genomowych">Specjalista ds. danych genomowych</ComboBoxItem>
+                                <ComboBoxItem Tag="Starszy Bioinformatyk">Starszy Bioinformatyk</ComboBoxItem>
+                                <ComboBoxItem Tag="Technik Laboratoryjny">Technik Laboratoryjny</ComboBoxItem>
                         </ComboBox>
                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Stanowisko</TextBlock>
                 </StackPanel>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="GridView/AddingWindow.axaml" value="GridView/GridView.csproj" />
+        <entry key="GridView/App.axaml" value="GridView/GridView.csproj" />
+        <entry key="GridView/DirectoryWindow.axaml" value="GridView/GridView.csproj" />
+        <entry key="GridView/MainWindow.axaml" value="GridView/GridView.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
