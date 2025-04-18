@@ -44,7 +44,10 @@ public partial class MainWindow : Window {
     {
        AddingWindow addingWindow = new AddingWindow();
        await addingWindow.ShowDialog(this);
-       Workers.Add(new Person(GetNewId, addingWindow.Name, addingWindow.Surname, addingWindow.Age, addingWindow.Position));
+       if (addingWindow.ShouldAdd) { 
+           Workers.Add(new Person(GetNewId, addingWindow.Name, addingWindow.Surname, addingWindow.Age, addingWindow.Position));
+       }
+      
     }
 
     private void Delete_OnClick(object? sender, RoutedEventArgs e)

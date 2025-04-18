@@ -32,15 +32,15 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Spacing="50">
                         <ComboBox Name="PositionBox" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <ComboBoxItem>Stanowisko 1</ComboBoxItem>
-                                <ComboBoxItem>Stanowisko 2</ComboBoxItem>
-                                <ComboBoxItem>Stanowisko 3</ComboBoxItem>
+                                <ComboBoxItem Tag="Asystent">Asystent</ComboBoxItem>
+                                <ComboBoxItem Tag="Analityk">Analityk</ComboBoxItem>
+                                <ComboBoxItem Tag="Administracja">Administracja</ComboBoxItem>
                         </ComboBox>
                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Stanowisko</TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40" Spacing="25">
                         <Button Click="Confirm_OnClick">Zatwierdź</Button>
-                        <Button>Anuluj</Button>
+                        <Button Click="Cancel_OnClick">Anuluj</Button>
                 </StackPanel>
         </StackPanel>
 </Window>

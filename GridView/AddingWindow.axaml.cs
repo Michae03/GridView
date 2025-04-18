@@ -14,6 +14,7 @@ public partial class AddingWindow : Window
     public AddingWindow() {
         InitializeComponent();
     }
+    public bool ShouldAdd {get; set;} = false;
 
     private void Confirm_OnClick(object? sender, RoutedEventArgs e) { 
         Name = NameBox.Text;
@@ -24,15 +25,21 @@ public partial class AddingWindow : Window
             Age = 0;
         }
 
-        if (PositionBox.SelectedItem != null)
+        if (PositionBox.SelectedItem is ComboBoxItem item)
         {
-            //DO ZROBIENIA JAK WRÓCE
+            Position = item.Tag.ToString(); 
         }
         else {
             Position = "";
         }
-       
+        ShouldAdd = true;
         Close();
         
+    }
+
+    private void Cancel_OnClick(object? sender, RoutedEventArgs e)
+    {
+        ShouldAdd = false;
+        Close();
     }
 }
