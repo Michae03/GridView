@@ -1,0 +1,46 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        CanResize="False"
+        Width="300"
+        Height="300"
+        x:Class="GridView.AddingWindow"
+        Title="Dodaj Pracownika">
+        
+        <Window.Styles>
+                <Style Selector="TextBox">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="MaxWidth" Value="100"></Setter>
+                </Style>
+                <Style Selector="ComboBox">
+                        <Setter Property="Width" Value="100"></Setter>
+                        <Setter Property="MaxWidth" Value="100"></Setter>
+                </Style>
+        </Window.Styles>
+        
+        <StackPanel Margin="20" Spacing="10">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Spacing="50">
+                        <TextBox Name="NameBox" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBox>
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Imię</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Spacing="50">
+                        <TextBox Name="SurnameBox" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBox>
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Nazwisko</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Spacing="50">
+                        <TextBox Name="AgeBox" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBox>
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Wiek</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Spacing="50">
+                        <ComboBox Name="PositionBox" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <ComboBoxItem>Stanowisko 1</ComboBoxItem>
+                                <ComboBoxItem>Stanowisko 2</ComboBoxItem>
+                                <ComboBoxItem>Stanowisko 3</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Stanowisko</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40" Spacing="25">
+                        <Button Click="Confirm_OnClick">Zatwierdź</Button>
+                        <Button>Anuluj</Button>
+                </StackPanel>
+        </StackPanel>
+</Window>

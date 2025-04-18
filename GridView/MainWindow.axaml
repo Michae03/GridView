@@ -1,29 +1,27 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        
+        xmlns:vm="clr-namespace:GridView"
+        x:DataType="vm:MainWindow"
         x:Class="GridView.MainWindow"
-        Title="GridView">
+        Title="Pracownicy"
+        CanResize="False"
+        Width="600" Height="350">
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="40" Spacing="30">
+            <DataGrid Name="WorkersDataGrid" Height="200" MaxWidth="400" ItemsSource="{Binding Workers}" 
+                      AutoGenerateColumns="True" IsReadOnly="True" GridLinesVisibility="All" 
+                      BorderThickness="1" BorderBrush="Gray" >
+            </DataGrid>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="30">
+                <Button Click="Add_OnClick">Dodaj</Button>
+                <Button Click="Delete_OnClick">Usuń</Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="30">
+            <Button>Zapis do .csv</Button>
+            <Button>Odczyt z .csv</Button>
+        </StackPanel>
+    </StackPanel>
     
-  <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-      <Grid.RowDefinitions>
-          <RowDefinition Height="40"></RowDefinition>
-          <RowDefinition Height="40"></RowDefinition>
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="40"></ColumnDefinition>
-          <ColumnDefinition Width="40"></ColumnDefinition>
-      </Grid.ColumnDefinitions>
-      <DataGrid Grid.Row="0" Grid.Column="0" Margin="20" ItemsSource="{Binding Workers}" 
-                AutoGenerateColumns="True" IsReadOnly="True" 
-                GridLinesVisibility="All"
-                BorderThickness="1" BorderBrush="Gray">
-          <DataGrid.Columns>
-              <DataGridTextColumn Header="Kolumna1"></DataGridTextColumn>
-          </DataGrid.Columns>
-      </DataGrid>
-      <Button Grid.Row="0" Grid.Column="1"></Button>
-      <Button Grid.Row="1" Grid.Column="1"></Button>
-  </Grid>
 </Window>
