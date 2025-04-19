@@ -99,6 +99,7 @@ public partial class MainWindow : Window {
 
     private async void Load_OnClick(object? sender, RoutedEventArgs e)
     {
+        Workers.Clear();
         DirectoryWindow directoryWindow = new DirectoryWindow();
         await directoryWindow.ShowDialog(this);
         var directory = directoryWindow.directory;
