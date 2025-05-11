@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using System.Xml.Serialization;
+
 
 namespace GridView;
 
@@ -13,7 +15,11 @@ public class Person {
     public string Surname { get; set; }
     public int Age { get; set; }
     public string Position { get; set; }
-    
+
+
+    public Person()
+    {
+    }
 
     public Person(Func<int> getId, string name = "", string surname= "", int age = 0, string position = "") {
         Id = getId();
@@ -121,4 +127,31 @@ public partial class MainWindow : Window {
             }
         }
     }
+    
+    private void SaveToXml(string filePath)
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Person>));
+        using (FileStream fs = new FileStream(filePath, FileMode.Create))
+        {
+            serializer.Serialize(fs, Workers);
+        }
+    }
+
+    
+    private async void SaveXml_OnClick(object? sender, RoutedEventArgs e)
+    {
+        DirectoryWindow directoryWindow = new DirectoryWindow();
+        await directoryWindow.ShowDialog(this);
+        var directory = directoryWindow.directory;
+        if (directory != "")
+        {
+            string projectRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\.."));
+            string fullPath = Path.Combine(projectRoot, "xml_files", directory + ".xml");
+            Directory.CreateDirectory(Path.GetDirectoryName(fullPath)!);
+            SaveToXml(fullPath);
+        }
+
+        directoryWindow.directory = "";
+    }
+
 }
