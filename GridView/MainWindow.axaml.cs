@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using System.Text.Json;
+
 
 namespace GridView;
 
@@ -121,4 +123,30 @@ public partial class MainWindow : Window {
             }
         }
     }
+    private void SaveToJson(string filePath)
+    {
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true 
+        };
+
+        string jsonString = JsonSerializer.Serialize(Workers, options);
+        File.WriteAllText(filePath, jsonString);
+    }
+    private async void SaveJson_OnClick(object? sender, RoutedEventArgs e)
+    {
+        DirectoryWindow directoryWindow = new DirectoryWindow();
+        await directoryWindow.ShowDialog(this);
+        var directory = directoryWindow.directory;
+        if (directory != "")
+        {
+            string projectRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\.."));
+            string fullPath = Path.Combine(projectRoot, "json_files", directory + ".json");
+            Directory.CreateDirectory(Path.GetDirectoryName(fullPath)!);
+            SaveToJson(fullPath);
+        }
+
+        directoryWindow.directory = "";
+    }
+
 }
